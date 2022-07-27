@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="car_obj" class="com.dependency_injection.DependencyInjection.Car">
+
+</bean>
+
+<bean id="vehicle" class="com.dependency_injection.DependencyInjection.Vehicle">
+	<property name="move" ref="car_obj">
+	</property>
+</bean>
+
+</beans>
