@@ -1,0 +1,19 @@
+
+<app-welcome></app-welcome>
+<div class="container">
+ 
+    <table class='table table-bordered table-light table-striped mt-2 mb-lg-0'>
+      <thead>
+          <tr>
+              <th>Code</th>
+              <th>Category</th>
+             
+          </tr>
+      </thead>
+      <tr *ngFor="let c of categories">
+        <td>{{c.categoryid}}</td>
+        <td>{{c.categoryname}}</td>
+      </tr>
+    </table> 
+  </div>
+  

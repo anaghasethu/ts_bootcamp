@@ -1,0 +1,29 @@
+<app-welcome></app-welcome>
+
+<div class="container">
+
+    <table class='table table-bordered table-light table-striped mt-2 mb-lg-0'>
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Available</th>
+               
+            </tr>
+    
+        </thead>
+        <tr  *ngFor="let p of products">
+            <td>{{p.sku }} </td>
+            <td>{{p.name}}</td>
+            <td><img [src]="p.imageurl" alt="" srcset=""></td>
+            <td>{{p.unitprice | currency:'INR'}}</td>
+            <td>{{p.unitsinstock}}</td>
+            <td>
+                &nbsp;
+                <button type="submit" class="btn btn-sm btn-info" (click)="updateProduct(p.id)">update</button>
+            </td>
+        </tr>
+        </table>
+</div>
