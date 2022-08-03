@@ -24,4 +24,7 @@ export class ProductGridComponent implements OnInit {
     })
   }
 
+  addCart(id:number){
+    this.route.navigateByUrl("/addtocart/"+id)
+   }
 }

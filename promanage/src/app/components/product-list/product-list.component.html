@@ -1,7 +1,11 @@
 <app-welcome></app-welcome>
-
 <div class="container">
-
+    <div>
+        <form #se="ngForm">
+            <input class="form-control" type="search" [(ngModel)]="searchByname">
+            <input type="submit" name="submit" value="search" onsubmit="getProductByName()" class="btn btn-info">
+        </form>
+    </div>
     <table class='table table-bordered table-light table-striped mt-2 mb-lg-0'>
         <thead>
             <tr>
@@ -10,7 +14,8 @@
                 <th>Image</th>
                 <th>Price</th>
                 <th>Available</th>
-               
+                <th>Action</th>
+                <th>Delete</th>
             </tr>
     
         </thead>
@@ -22,7 +27,11 @@
             <td>{{p.unitsinstock}}</td>
             <td>
                 &nbsp;
-                <button type="submit" class="btn btn-sm btn-info" (click)="updateProduct(p.id)">update</button>
+                <button type="submit" class="btn btn-sm btn-info" (click)="updateProduct(p.id)">Update</button>
+            </td>
+            <td>
+                &nbsp;
+                <button type="submit" class="btn btn-sm btn-info" (click)="deleteProduct(p.id)">Delete</button>
             </td>
         </tr>
         </table>

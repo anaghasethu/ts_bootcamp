@@ -27,21 +27,25 @@
                   Category
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item btn "  (click)="catDetails()"  >Category</a></li>
+                  <li><a class="dropdown-item btn " (click)="catDetails()"  >Category</a></li>
                 </ul>
             </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item dropdown"> 
+              <a class="nav-link dropdown-toggle" href="#" role="button" (click)="getAllCategories()" data-bs-toggle="dropdown" aria-expanded="false">
                 Filter
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item btn "  (click)="filterByProduct()">Product name</a></li>
-                <li><a class="dropdown-item btn "  (click)="filterByCategory()">Category</a></li>
+                <li *ngFor="let cat of categories">
+                  <a class="dropdown-item btn"  routerLink="/product/{{cat.categoryid}}">{{cat.categoryname}}</a>
+                </li>
               </ul>
           </li>
           </ul>
+          
         </div>
         </div>
         </nav>
+
+        
 

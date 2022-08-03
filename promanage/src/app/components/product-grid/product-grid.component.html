@@ -9,7 +9,7 @@
               <h5 class="card-title">{{p.name}}</h5>
               <p class="card-text">Price : {{p.unitprice | currency:'INR'}}</p>
               <p class="card-text">{{p.description}}</p>
-              <a href="#" class="btn btn-dark">Add to cart</a>
+              <button type="submit" class="btn btn-sm btn-dark" (click)="addCart(p.id)">Add to cart</button>
             </div>
           </div>
         </div>

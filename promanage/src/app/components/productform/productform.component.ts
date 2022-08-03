@@ -20,15 +20,15 @@ export class ProductformComponent implements OnInit {
 
   ngOnInit(): void {
     this.listOfCategories()
-    this.activateRoute.paramMap.subscribe(() => {this.getProductById})
+    this.activateRoute.paramMap.subscribe(() => {this.getProductById()})
   }
 
   getProductById(){
-    const pID = +this.activateRoute.snapshot.paramMap.get("id");
-    console.log(pID);
-    if(pID>0){
+    const pid = +this.activateRoute.snapshot.paramMap.get("id");
+    console.log(pid);
+    if(pid>0){
       this.isEditable = true
-      this.service.getProductById(pID).subscribe((data => {
+      this.service.getProductById(pid).subscribe((data => {
         this.product = data
       }))
     }

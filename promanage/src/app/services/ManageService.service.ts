@@ -26,8 +26,8 @@ export class ManagementServiceService {
       return this.httpClient.get<product>(idURL);
     }
 
-    saveProduct(product : product) : Observable<product>{
-      console.log(product)
+    saveProduct(pro : product) : Observable<product>{
+      console.log(pro)
   
       const httpOptions = {
         headers : new HttpHeaders({
@@ -36,7 +36,12 @@ export class ManagementServiceService {
             'Access-Control-Allow-Origin' : '*'
         })
       }
-      return this.httpClient.post<product>(this.proURL,product,httpOptions);
+      return this.httpClient.post<product>(this.proURL,pro,httpOptions);
+  }
+
+  getProductByCatId(categoryid: number):Observable<product[]>{
+    const productcatURL = "http://localhost:8080/api/product/search/findBycategoryid?categoryid="+categoryid;
+    return this.httpClient.get<getProductResponse>(productcatURL).pipe(map(response=>response._embedded.products))
   }
   
   updateProduct(product : product): Observable<product>{
@@ -52,6 +57,28 @@ export class ManagementServiceService {
   
     return this.httpClient.put<product>(this.proURL+`/${product.id}`,product,httpOptions)
   }
+
+  getProductByName(name: String): Observable<product[]>{
+    const pronameURL = "http://localhost:8080/api/product/search/findByName?name=" + name
+    return this.httpClient.get<getProductResponse>(pronameURL).pipe(map(response => response._embedded.products))
+  }
+  
+  deleteProduct(id : number): Observable<product>{
+    console.log(id)
+  
+    const httpOptions = {
+      headers : new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Authorization' : 'auth-token',
+          'Access-Control-Allow-Origin' : '*'
+      })
+    };
+  
+    return this.httpClient.delete<product>(this.proURL+`/${id}`,httpOptions)
+  }
+
+ 
+  
   
   
   }
