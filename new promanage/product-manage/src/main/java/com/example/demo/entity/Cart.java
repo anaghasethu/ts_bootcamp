@@ -34,14 +34,13 @@ public class Cart {
 	private Date lastupdated;
 	@Column(name = "categoryid")
 	private int categoryid;
-	@Column(name = "number")
-	private int number;
+	
 	public Cart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Cart(Integer id, String sku, String name, String description, float unitprice, String imageurl,
-			boolean active, int unitsinstock, Date datecreated, Date lastupdated, int categoryid, int number) {
+			boolean active, int unitsinstock, Date datecreated, Date lastupdated, int categoryid) {
 		super();
 		this.id = id;
 		this.sku = sku;
@@ -54,7 +53,6 @@ public class Cart {
 		this.datecreated = datecreated;
 		this.lastupdated = lastupdated;
 		this.categoryid = categoryid;
-		this.number = number;
 	}
 	public Integer getId() {
 		return id;
@@ -122,18 +120,13 @@ public class Cart {
 	public void setCategoryid(int categoryid) {
 		this.categoryid = categoryid;
 	}
-	public int getNumber() {
-		return number;
-	}
-	public void setNumber(int number) {
-		this.number = number;
-	}
+	
 	@Override
 	public String toString() {
 		return "Cart [id=" + id + ", sku=" + sku + ", name=" + name + ", description=" + description + ", unitprice="
 				+ unitprice + ", imageurl=" + imageurl + ", active=" + active + ", unitsinstock=" + unitsinstock
 				+ ", datecreated=" + datecreated + ", lastupdated=" + lastupdated + ", categoryid=" + categoryid
-				+ ", number=" + number + "]";
+				+ "]";
 	}
 	
 	
