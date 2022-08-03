@@ -4,17 +4,14 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "cart")
+public class Cart {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	@Column(name = "sku")
@@ -37,13 +34,16 @@ public class Product {
 	private Date lastupdated;
 	@Column(name = "categoryid")
 	private int categoryid;
-	public Product() {
+	@Column(name = "number")
+	private int number;
+	public Cart() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Product(String sku, String name, String description, float unitprice, String imageurl,
-			boolean active, int unitsinstock, Date datecreated, Date lastupdated, int categoryid) {
+	public Cart(Integer id, String sku, String name, String description, float unitprice, String imageurl,
+			boolean active, int unitsinstock, Date datecreated, Date lastupdated, int categoryid, int number) {
 		super();
+		this.id = id;
 		this.sku = sku;
 		this.name = name;
 		this.description = description;
@@ -54,6 +54,7 @@ public class Product {
 		this.datecreated = datecreated;
 		this.lastupdated = lastupdated;
 		this.categoryid = categoryid;
+		this.number = number;
 	}
 	public Integer getId() {
 		return id;
@@ -121,10 +122,20 @@ public class Product {
 	public void setCategoryid(int categoryid) {
 		this.categoryid = categoryid;
 	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", sku=" + sku + ", name=" + name + ", description=" + description + ", unitprice="
+		return "Cart [id=" + id + ", sku=" + sku + ", name=" + name + ", description=" + description + ", unitprice="
 				+ unitprice + ", imageurl=" + imageurl + ", active=" + active + ", unitsinstock=" + unitsinstock
-				+ ", datecreated=" + datecreated + ", lastupdated=" + lastupdated + ", categoryid=" + categoryid + "]";
+				+ ", datecreated=" + datecreated + ", lastupdated=" + lastupdated + ", categoryid=" + categoryid
+				+ ", number=" + number + "]";
 	}
+	
+	
+	
 }

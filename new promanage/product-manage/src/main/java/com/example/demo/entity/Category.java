@@ -11,22 +11,22 @@ public class Category {
 
 	@Id
 	@Column(name = "categoryid")
-	private int categoryid;
+	private Integer categoryid;
 	@Column(name = "categoryname")
 	private String categoryname;
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Category(int categoryid, String categoryname) {
+	public Category(Integer categoryid, String categoryname) {
 		super();
 		this.categoryid = categoryid;
 		this.categoryname = categoryname;
 	}
-	public int getCategoryid() {
+	public Integer getCategoryid() {
 		return categoryid;
 	}
-	public void setCategoryid(int categoryid) {
+	public void setCategoryid(Integer categoryid) {
 		this.categoryid = categoryid;
 	}
 	public String getCategoryname() {
