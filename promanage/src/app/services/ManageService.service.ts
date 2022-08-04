@@ -9,6 +9,7 @@ import { product } from '../common/product';
 })
  
 export class ManagementServiceService {
+    isuserLoggedin = false;
     proURL = "http://localhost:8080/api/product"
     catURL  = "http://localhost:8080/api/categories"
     constructor( private httpClient : HttpClient) { }
@@ -27,8 +28,7 @@ export class ManagementServiceService {
     }
 
     saveProduct(pro : product) : Observable<product>{
-      console.log(pro)
-  
+      console.log(pro)  
       const httpOptions = {
         headers : new HttpHeaders({
             'Content-Type' : 'application/json',
@@ -77,10 +77,40 @@ export class ManagementServiceService {
     return this.httpClient.delete<product>(this.proURL+`/${id}`,httpOptions)
   }
 
- 
+  addCart(product : product): Observable<product>{
+    const cartURL = "http://localhost:8080/api/cart"
+    console.log(product)
   
+    const httpOptions = {
+      headers : new HttpHeaders({
+          'Content-Type' : 'application/json',
+          'Authorization' : 'auth-token',
+          'Access-Control-Allow-Origin' : '*'
+      })
+    }
   
+    return this.httpClient.post<product>(cartURL+`/${product.id}`,product,httpOptions)
+  }
   
+  getUserStatus(){
+   return this.isuserLoggedin;
+  }
+
+  setUserLoggedIn(){
+    this.isuserLoggedin = true
+  }
+
+  setUserLoggedOut(){
+    this.isuserLoggedin = false;
+  }
+
+  // verifyUser(email: string,password: string){
+  //   if(email === 'HR' && password === 'HR')
+  //     return true;
+  //   else
+  //     return false;
+  // }
+    
   }
   
   interface getCategoryResponse {

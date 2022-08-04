@@ -44,12 +44,14 @@ export class ProductformComponent implements OnInit {
   onsubmit(){
     console.log(this.product)
     if(this.isEditable){ // iseditable = true
-      this.service.updateProduct(this.product).subscribe(()=>{
+        this.service.updateProduct(this.product).subscribe(data =>{
+        console.log(data)
         this.route.navigateByUrl("/product")
       })
 
    }else{
-    this.service.saveProduct(this.product).subscribe(()=>{
+      this.service.saveProduct(this.product).subscribe(data=>{
+      console.log(data)
       this.route.navigateByUrl("/product")
     })
   }}

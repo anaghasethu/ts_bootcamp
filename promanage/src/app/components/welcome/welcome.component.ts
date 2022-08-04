@@ -5,19 +5,25 @@ import { ManagementServiceService } from 'src/app/services/ManageService.service
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ActivatedRoute } from '@angular/router';
 import { product } from 'src/app/common/product';
+
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-
+  status: ['Login','Logout']
   categories: category[]
   products: product[]
   newcategoryid: number
   constructor(private service: ManagementServiceService, private route: Router, private activeroute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activeroute.paramMap.subscribe(() =>
+    {
+      this.getAllProducts()
+    });
   }
 
   catDetails(){
@@ -62,5 +68,17 @@ export class WelcomeComponent implements OnInit {
 
   addProduct(){
     this.route.navigateByUrl("/productform")
+  }
+
+  login(){
+    this.route.navigateByUrl("/login")
+  }
+
+  logout(){
+    this.service.setUserLoggedOut();
+    this.route.navigateByUrl("/login")
+  }
+  home(){
+    this.route.navigateByUrl("")
   }
 }

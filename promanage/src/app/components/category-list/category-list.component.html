@@ -1,10 +1,13 @@
 
 <app-welcome></app-welcome>
 <div class="container">
- <!-- <li>
-  <a routerLink="/product/{{c.categoryid}}">{{c.categoryname}}</a>
- </li> -->
-    <table class='table table-bordered table-light table-striped mt-2 mb-lg-0'>
+  <ul *ngFor="let c of categories">
+    <li>
+      <a routerLink="/product/{{c.categoryid}}">{{c.categoryname}}</a>
+    </li>
+  </ul>
+ 
+    <!-- <table class='table table-bordered table-light table-striped mt-2 mb-lg-0'>
       <thead>
           <tr>
               <th>Code</th>
@@ -16,6 +19,6 @@
         <td>{{c.categoryid}}</td>
         <td>{{c.categoryname}}</td>
       </tr>
-    </table> 
+    </table>  -->
   </div>
   
